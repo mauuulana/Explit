@@ -10,15 +10,8 @@ import UIKit
 
 class TimelineTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    @IBOutlet weak var dateTimelineLabel: UILabel!
+    @IBOutlet weak var descTimelineLabel: UILabel!
+    @IBOutlet weak var titleTimelineLabel: UILabel!
+    
 }

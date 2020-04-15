@@ -9,22 +9,37 @@
 import UIKit
 
 class TimelineMissionViewController: UIViewController {
+    
+    @IBOutlet weak var listTimelineMission: UITableView!
+    
+    var listTimelineFinal: [Timeline] = []
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+     
+        listTimelineMission.delegate = self
+        listTimelineMission.dataSource = self
 
         // Do any additional setup after loading the view.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension TimelineMissionViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return listTimelineFinal.count
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellTimeline = listTimelineMission.dequeueReusableCell(withIdentifier: "timelineList", for: indexPath) as! TimelineTableViewCell
+        
+        let cellIndex = indexPath.item
+        cellTimeline.dateTimelineLabel.text = listTimelineFinal[cellIndex].date
+        cellTimeline.titleTimelineLabel.text =
+            listTimelineFinal[cellIndex].title
+        cellTimeline.descTimelineLabel.text =
+            listTimelineFinal[cellIndex].descTimeline
+        
+        return cellTimeline
+    }
+    
+    
 }

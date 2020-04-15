@@ -9,82 +9,75 @@
 import UIKit
 
 class ListMissionTableViewController: UITableViewController {
-
+    
+    @IBOutlet var listTableMission: UITableView!
+    
+    let listMission = MissionManager.init().arrayOfMission
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        listTableMission.delegate = self
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return listMission.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "missionChallenge", for: indexPath) as! MissionsIndexTableViewCell
 
-        // Configure the cell...
+        let cellIndex = indexPath.item
+        
+        cell.imageMission.image = listMission[cellIndex].imageMission
+        cell.nameMissionLabel.text = listMission[cellIndex].name
+        cell.typeMissionLabel.text = listMission[cellIndex].type
+        cell.detailMissionLabel.text = listMission[cellIndex].duration + " . " + listMission[cellIndex].level
+        
+        cell.cardViewTable.backgroundColor = #colorLiteral(red: 0.1206525043, green: 0.125664264, blue: 0.129843235, alpha: 1)
+        
+        cell.cardViewTable.layer.shadowColor = UIColor.gray.cgColor
+        cell.cardViewTable.layer.shadowOffset = CGSize(width: 0, height: 0.7)
+        cell.cardViewTable.layer.shadowRadius = 1.0
+        cell.cardViewTable.layer.shadowOpacity = 0.4
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let showDetails = storyboard?.instantiateViewController(withIdentifier: "detailMission") as! DetailMissionViewController
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let showDetails = storyBoard.instantiateViewController(withIdentifier: "detailMission") as! DetailMissionViewController
+        /*let overviewDetails = storyBoard.instantiateViewController(withIdentifier: "overviewMission") as! OverviewMissionViewController
+        let requirementsDetails = storyBoard.instantiateViewController(withIdentifier: "requirementsMission") as! RequirementsMissionViewController
+        let timelineDetails = storyBoard.instantiateViewController(withIdentifier: "timelineMission") as! TimelineMissionViewController*/
+        
+        
+        let cellIndexRow = indexPath.item
+        
+        showDetails.nameMission = listMission[cellIndexRow].name
+        showDetails.typeMission = listMission[cellIndexRow].type
+        showDetails.durationMission = listMission[cellIndexRow].duration
+        showDetails.levelMission = listMission[cellIndexRow].level
+        showDetails.headMission = listMission[cellIndexRow].headerMission
+        showDetails.descMission = listMission[cellIndexRow].description
+        showDetails.listExploration = listMission[cellIndexRow].explorationGoals
+        showDetails.listConstraint = listMission[cellIndexRow].constraints
+        showDetails.missionGoals = listMission[cellIndexRow].missionGoals
+        showDetails.listTimeline = listMission[cellIndexRow].timeline
+        showDetails.iconMissionGoals = listMission[cellIndexRow].iconMissionGoals
+        
+        
+        showDetails.modalPresentationStyle = .fullScreen
+        self.present(showDetails, animated: true, completion: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

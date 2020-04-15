@@ -10,15 +10,10 @@ import UIKit
 
 class MissionsIndexTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    @IBOutlet weak var imageMission: UIImageView!
+    @IBOutlet weak var detailMissionLabel: UILabel!
+    @IBOutlet weak var typeMissionLabel: UILabel!
+    @IBOutlet weak var nameMissionLabel: UILabel!
+    @IBOutlet weak var cardViewTable: UIView!
+    
 }

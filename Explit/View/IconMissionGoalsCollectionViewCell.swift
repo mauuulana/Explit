@@ -9,5 +9,6 @@
 import UIKit
 
 class IconMissionGoalsCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var iconMissionGoals: UIImageView!
     
 }

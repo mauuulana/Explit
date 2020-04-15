@@ -10,21 +10,36 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var viewOverview: UIView!
+    @IBOutlet weak var viewTimeline: UIView!
+    @IBOutlet weak var viewRequirements: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewOverview.alpha = 1
         // Do any additional setup after loading the view.
     }
     
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func segmentPressed(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewOverview.alpha = 1
+            viewTimeline.alpha = 0
+            viewRequirements.alpha = 0
+        case 1:
+            viewOverview.alpha = 0
+            viewTimeline.alpha = 0
+            viewRequirements.alpha = 1
+        case 2:
+            viewOverview.alpha = 0
+            viewTimeline.alpha = 1
+            viewRequirements.alpha = 0
+        default:
+            break
+        }
+        
     }
-    */
-
 }
