@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
 class BoardViewController: UIViewController {
     
     @IBOutlet weak var collectionBoard: UICollectionView!
     
-    var boards: [Board] = []
-    var defaults = UserDefaults.standard
+    var board = [Board]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionBoard.dataSource = self
         collectionBoard.delegate = self
+        
+        
+    let fetchRequest: NSFetchRequest<Board> = Board.fetchRequest()
+               
+        do {
+            let board = try PersistenceService.context.fetch(fetchRequest)
+            self.board = board
+            self.collectionBoard.reloadData()
+        } catch {}
         
         updateCollectionViewItem(with: view.bounds.size)
         
@@ -29,13 +38,16 @@ class BoardViewController: UIViewController {
         let alertPopup = UIAlertController(title: "Add Mission", message: nil, preferredStyle: .alert)
         alertPopup.addTextField(configurationHandler: nil)
         alertPopup.addAction(UIAlertAction(title: "Add", style: .default, handler: { (_) in
-            guard let text = alertPopup.textFields?.first?.text, !text.isEmpty else {
+            guard let missionName = alertPopup.textFields?.first?.text, !missionName.isEmpty else {
                 return
             }
             
-            self.boards.append(Board(mission: text, notes: []))
+            let name = Board(context: PersistenceService.context)
+            name.mission = missionName
+            PersistenceService.saveContext()
+            self.board.append(name)
             
-            let addedNewMission = IndexPath(item: self.boards.count - 1, section: 0)
+            let addedNewMission = IndexPath(item: self.board.count - 1, section: 0)
             
             self.collectionBoard.insertItems(at: [addedNewMission])
             self.collectionBoard.scrollToItem(at: addedNewMission, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
@@ -44,22 +56,17 @@ class BoardViewController: UIViewController {
         alertPopup.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertPopup, animated: true)
     }
-    
-//    func checkMission () {
-//        let mission = defaults.value(forKey: Keys.Mission) as? String ?? ""
-//        boards.append(Board(mission: mission, notes: []))
-//    }
 }
 
 extension BoardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return boards.count
+        return board.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellBoard = collectionBoard.dequeueReusableCell(withReuseIdentifier: "cellBoard", for: indexPath) as! BoardCollectionViewCell
         
-        cellBoard.setupBoard(with: boards[indexPath.item])
+        cellBoard.setupBoard(with: board[indexPath.item])
         cellBoard.boardView = self
         
         return cellBoard
