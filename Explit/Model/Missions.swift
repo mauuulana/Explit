@@ -41,9 +41,9 @@ struct missions {
 }
 
 struct Timeline {
-let date: String
-let title: String
-let descTimeline: String
+    let date: String
+    let title: String
+    let descTimeline: String
 
 init(date: String, title: String, desc: String) {
     self.date = date

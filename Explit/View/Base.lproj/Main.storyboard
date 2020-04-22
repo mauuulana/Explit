@@ -985,7 +985,7 @@
                                 <gestureRecognizers/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
+                                        <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1673,7 +1673,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="115" height="102"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YBd-1f-7Rw">
-                                                                            <rect key="frame" x="27" y="29" width="60.5" height="45"/>
+                                                                            <rect key="frame" x="27.5" y="29" width="60.5" height="45"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 FEB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLH-Ys-ucZ">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="60.5" height="21.5"/>
@@ -1898,6 +1898,12 @@
                                     <segue destination="iHU-aK-Fvt" kind="embed" id="lxo-iH-ywP"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eeY-9q-OhO">
+                                <rect key="frame" x="0.0" y="548" width="414" height="348"/>
+                                <connections>
+                                    <segue destination="FWK-rq-WTx" kind="embed" id="xOT-UT-ZMz"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686275" green="0.12549019610000001" blue="0.12941176469999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1910,16 +1916,20 @@
                             <constraint firstAttribute="trailing" secondItem="hAK-lU-mn9" secondAttribute="trailing" id="AnR-sQ-CBm"/>
                             <constraint firstItem="bSU-jT-qqH" firstAttribute="top" secondItem="gIo-Th-1r7" secondAttribute="bottom" constant="8" id="BCs-Gm-RhI"/>
                             <constraint firstItem="mFO-oY-obc" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oEv-vz-JLC" secondAttribute="trailing" symbolic="YES" id="Bcx-fp-Fle"/>
+                            <constraint firstItem="eeY-9q-OhO" firstAttribute="top" secondItem="gIo-Th-1r7" secondAttribute="bottom" constant="8" id="EXi-4d-QOD"/>
                             <constraint firstItem="mFO-oY-obc" firstAttribute="bottom" secondItem="gIo-Th-1r7" secondAttribute="bottom" constant="322" id="Ecc-7I-H7y"/>
                             <constraint firstItem="AbT-dX-G8V" firstAttribute="top" secondItem="4Jh-Rs-83T" secondAttribute="bottom" id="FmI-NJ-479"/>
                             <constraint firstAttribute="bottom" secondItem="bSU-jT-qqH" secondAttribute="bottom" id="HEM-Rw-4b1"/>
                             <constraint firstItem="4Jh-Rs-83T" firstAttribute="top" secondItem="Wn9-k5-ZW9" secondAttribute="top" id="Tv9-Gx-Hsj"/>
+                            <constraint firstItem="eeY-9q-OhO" firstAttribute="leading" secondItem="Wn9-k5-ZW9" secondAttribute="leading" id="UwH-DR-nOj"/>
                             <constraint firstItem="hAK-lU-mn9" firstAttribute="top" secondItem="gIo-Th-1r7" secondAttribute="bottom" constant="8" id="YiK-gx-Jzu"/>
                             <constraint firstItem="hAK-lU-mn9" firstAttribute="leading" secondItem="Wn9-k5-ZW9" secondAttribute="leading" id="ZMr-JQ-ypY"/>
+                            <constraint firstAttribute="trailing" secondItem="eeY-9q-OhO" secondAttribute="trailing" id="ZgY-zg-fIb"/>
                             <constraint firstItem="oEv-vz-JLC" firstAttribute="top" secondItem="mFO-oY-obc" secondAttribute="top" constant="16" id="bGm-dJ-tJ9"/>
                             <constraint firstItem="AbT-dX-G8V" firstAttribute="leading" secondItem="Wn9-k5-ZW9" secondAttribute="leading" id="fKr-Bw-V01"/>
                             <constraint firstItem="bSU-jT-qqH" firstAttribute="leading" secondItem="Wn9-k5-ZW9" secondAttribute="leading" id="iEx-Y9-sNf"/>
                             <constraint firstItem="gIo-Th-1r7" firstAttribute="leading" secondItem="Wn9-k5-ZW9" secondAttribute="leading" constant="16" id="mly-sA-DrJ"/>
+                            <constraint firstAttribute="bottom" secondItem="eeY-9q-OhO" secondAttribute="bottom" id="nVH-9N-cyD"/>
                             <constraint firstAttribute="trailing" secondItem="4Jh-Rs-83T" secondAttribute="trailing" id="qKf-BS-OTu"/>
                             <constraint firstItem="gIo-Th-1r7" firstAttribute="centerX" secondItem="Wn9-k5-ZW9" secondAttribute="centerX" id="r9R-RC-Psq"/>
                             <constraint firstItem="gIo-Th-1r7" firstAttribute="top" secondItem="AbT-dX-G8V" secondAttribute="bottom" constant="8" id="uSd-FP-5JC"/>
@@ -1936,6 +1946,7 @@
                         <outlet property="levelDetail" destination="iCJ-vM-bOB" id="pqk-Gr-FWe"/>
                         <outlet property="nameDetail" destination="Xtd-ZK-DT0" id="DMm-Ca-uVa"/>
                         <outlet property="typeDetail" destination="eKb-r2-88j" id="97w-nz-kWp"/>
+                        <outlet property="viewComingSoon" destination="eeY-9q-OhO" id="pOr-vX-vlG"/>
                         <outlet property="viewOverview" destination="lcV-1c-Zhg" id="VHt-US-IX4"/>
                         <outlet property="viewRequirements" destination="hAK-lU-mn9" id="BTg-rO-BEE"/>
                         <outlet property="viewTimeline" destination="bSU-jT-qqH" id="16T-GD-CKf"/>
@@ -1944,7 +1955,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Wc-tg-T5V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="A8W-Yy-vtA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3106" y="-808"/>
+            <point key="canvasLocation" x="3105.7971014492755" y="-808.25892857142856"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ovb-hG-ZWk">
+            <objects>
+                <viewController id="FWK-rq-WTx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xgz-uW-PK7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="348"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ComingSoon" translatesAutoresizingMaskIntoConstraints="NO" id="Mzn-s8-cje">
+                                <rect key="frame" x="94.5" y="114" width="225" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Mzn-s8-cje" secondAttribute="height" multiplier="15:8" id="lYy-t6-02w"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20392156862745098" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Mzn-s8-cje" firstAttribute="centerY" secondItem="xgz-uW-PK7" secondAttribute="centerY" id="lNU-rM-WsW"/>
+                            <constraint firstItem="Mzn-s8-cje" firstAttribute="centerX" secondItem="xgz-uW-PK7" secondAttribute="centerX" id="rAV-N9-DFM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sbw-qT-3Zw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4699" y="-905"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1957,6 +1994,7 @@
         <image name="BgDetailExplorer" width="422" height="234"/>
         <image name="BoardActive" width="25" height="18"/>
         <image name="BoardDisable" width="25" height="18"/>
+        <image name="ComingSoon" width="112" height="120"/>
         <image name="Constraints" width="16" height="16"/>
         <image name="Docs" width="30" height="40"/>
         <image name="Explit" width="333" height="125"/>

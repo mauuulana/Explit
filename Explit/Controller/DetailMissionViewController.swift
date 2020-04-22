@@ -19,6 +19,7 @@ class DetailMissionViewController: UIViewController {
     @IBOutlet weak var viewOverview: UIView!
     @IBOutlet weak var viewRequirements: UIView!
     @IBOutlet weak var viewTimeline: UIView!
+    @IBOutlet weak var viewComingSoon: UIView!
     
     var nameMission = ""
     var headMission: UIImage = #imageLiteral(resourceName: "Mission2Thumbnail")
@@ -44,24 +45,42 @@ class DetailMissionViewController: UIViewController {
         
         print(iconMissionGoals)
         
-        viewOverview.alpha = 1
-        
+        if descMission == "Coming Soon" && listExploration == ["Coming Soon"] {
+            viewComingSoon.alpha = 1
+        } else {
+            viewOverview.alpha = 1
+        }
     }
     
     @IBAction func segmentedDetails(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            viewOverview.alpha = 1
-            viewTimeline.alpha = 0
-            viewRequirements.alpha = 0
+            if descMission == "Coming Soon" && listExploration == ["Coming Soon"] {
+                viewComingSoon.alpha = 1
+            } else {
+                viewComingSoon.alpha = 0
+                viewOverview.alpha = 1
+                viewTimeline.alpha = 0
+                viewRequirements.alpha = 0
+            }
         case 1:
-            viewOverview.alpha = 0
-            viewTimeline.alpha = 0
-            viewRequirements.alpha = 1
+            if missionGoals == "Coming Soon" && listConstraint == ["Coming Soon"] {
+                viewComingSoon.alpha = 1
+            } else {
+                viewComingSoon.alpha = 0
+                viewOverview.alpha = 0
+                viewTimeline.alpha = 0
+                viewRequirements.alpha = 1
+            }
         case 2:
-            viewOverview.alpha = 0
-            viewTimeline.alpha = 1
-            viewRequirements.alpha = 0
+            if listTimeline.count <= 1 {
+                viewComingSoon.alpha = 1
+            } else {
+                viewOverview.alpha = 0
+                viewComingSoon.alpha = 0
+                viewTimeline.alpha = 1
+                viewRequirements.alpha = 0
+            }
         default:
             break
         }
