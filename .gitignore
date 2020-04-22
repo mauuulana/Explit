@@ -73,7 +73,11 @@ iOSInjectionProject/
 .LSOverride
 
 # Icon must end with two \r
+<<<<<<< HEAD
 Icon
+=======
+Icon
+>>>>>>> master
 
 # Thumbnails
 ._*
