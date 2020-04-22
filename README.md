@@ -1,6 +1,6 @@
 <h1>Explit
 
-Explit is abrevation of **Explorer Asistant**. This application hopefully can asist to all explorers for exploring the space to learn about iOS technology.
+Explit is abrevation of **Explorer Assistant**. This application hopefully can assist to all explorers for exploring the space to learn about iOS technology.
 
 <hr>
 <h3>Features
